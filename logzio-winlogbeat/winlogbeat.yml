@@ -18,7 +18,7 @@ fields_under_root: true
 output.logstash:
   hosts: ["<<LISTENER_URL>>:5015"]
   ssl:
-    certificate_authorities: ['C:\ProgramData\Filebeat\COMODORSADomainValidationSecureServerCA.crt']
+    certificate_authorities: ['C:\ProgramData\Winlogbeat\COMODORSADomainValidationSecureServerCA.crt']
 
 #The following processors are to ensure compatibility with version 7
 processors:
