@@ -26,7 +26,7 @@ processors:
 #================================ Outputs =====================================
 
 output.logstash:
-  hosts: ["listener.logz.io:5015"]
+  hosts: ["<<LISTENER_URL>>.logz.io:5015"]
   ssl.certificate_authorities: ['/etc/pki/tls/certs/COMODORSADomainValidationSecureServerCA.crt']
 
 #================================ Processors =====================================
