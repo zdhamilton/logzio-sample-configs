@@ -1,0 +1,38 @@
+###################### Metricbeat Configuration Example #######################
+#==========================  Modules configuration ============================
+
+metricbeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+#================================ General =====================================
+
+fields:
+  logzio_codec: json
+  token: <<SHIPPING TOKEN>>
+fields_under_root: true
+processors:
+- rename:
+    fields:
+     - from: "agent"
+       to: "beat_agent"
+    ignore_missing: true
+- rename:
+    fields:
+     - from: "log.file.path"
+       to: "source"
+    ignore_missing: true
+
+#================================ Outputs =====================================
+
+output.logstash:
+  hosts: ["listener.logz.io:5015"]
+  ssl.certificate_authorities: ['/etc/pki/tls/certs/COMODORSADomainValidationSecureServerCA.crt']
+
+#================================ Processors =====================================
+
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
+
+###################### Metricbeat Configuration Example #######################
